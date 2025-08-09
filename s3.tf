@@ -20,6 +20,10 @@ resource "aws_s3_bucket" "s3_bucket" {
   bucket = "vpc-flowlogs-quicksight"
 }
 
+resource "aws_s3_bucket" "s3_athena" {
+  bucket = "athena-results-for-quicksight"
+}
+
 
 resource "aws_s3_bucket_policy" "s3_policy" {
   bucket = aws_s3_bucket.s3_bucket.id
