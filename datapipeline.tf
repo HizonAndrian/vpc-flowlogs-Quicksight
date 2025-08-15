@@ -86,8 +86,9 @@ resource "aws_glue_crawler" "glue_crawler" {
   name          = "glue_crawler"
   role          = aws_iam_role.glue_role.arn
   s3_target {
-    path = "s3://${aws_s3_bucket.s3_bucket.bucket}/AWSLogs/"
+    path = "s3://${aws_s3_bucket.s3_bucket.bucket}/AWSLogs/${data.aws_caller_identity.current.account_id}/vpcflowlogs/${data.aws_region.current.region}/"
   }
+  schedule     = "cron(10 0 * * ? *)"
   table_prefix = "flowlogs_"
   classifiers  = [aws_glue_classifier.vpc_flowlogs_classifier.name]
 }
@@ -95,12 +96,18 @@ resource "aws_glue_crawler" "glue_crawler" {
 resource "aws_glue_classifier" "vpc_flowlogs_classifier" {
   name = "vpc_flowlogs_classifier"
 
-  grok_classifier {
-    classification = "vpcflowlogs"
-    grok_pattern   = "%%{NUMBER:version:int} %%{NOTSPACE:account_id} %%{NOTSPACE:interface_id} %%{IP:srcaddr} %%{IP:dstaddr} %%{NUMBER:srcport:int} %%{NUMBER:dstport:int} %%{NUMBER:protocol:int} %%{NUMBER:packets:int} %%{NUMBER:bytes:int} %%{NUMBER:start:long} %%{NUMBER:end:long} %%{WORD:action} %%{WORD:log_status}"
+  csv_classifier {
+    allow_single_column    = true
+    contains_header        = "PRESENT"
+    delimiter              = " "
+    disable_value_trimming = false
   }
-
 }
+
+  # grok_classifier {
+  #   classification = "vpcflowlogs"
+  #   grok_pattern   = "%%{NUMBER:version:int}\\s+%%{NOTSPACE:account_id}\\s+%%{NOTSPACE:interface_id}\\s+%%{IP:srcaddr}\\s+%%{IP:dstaddr}\\s+%%{DATA:srcport}\\s+%%{DATA:dstport}\\s+%%{NUMBER:protocol:int}\\s+%%{NUMBER:packets:int}\\s+%%{NUMBER:bytes:int}\\s+%%{NUMBER:start:long}\\s+%%{NUMBER:end:long}\\s+%%{WORD:action}\\s+%%{WORD:log_status}"
+  # }
 
 
 
@@ -159,7 +166,9 @@ data "aws_iam_policy_document" "glue_policy_document" {
       "glue:DeleteTable",
       "glue:CreateDatabase",
       "glue:BatchGetPartition",
-      "glue:BatchCreatePartition"
+      "glue:BatchCreatePartition",
+      "glue:GetPartition",
+      "glue:GetPartitions"
     ]
     effect = "Allow"
     resources = [
