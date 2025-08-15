@@ -5,7 +5,7 @@
   This project demonstrates an end-to-end VPC Flow Logs analysis pipeline on AWS using serverless services for data processing, querying, and visualization. The developer used Terraform (with OIDC authentication and CLI Driven) to provision and manage all resources, ensuring reproducibility and security The system automatically collects VPC Flow Logs, processes them with AWS Glue, queries them using Athena, and visualizes insights in QuickSight.
 
 
-# Architecture
+# 📐 Architecture
  1. Data Source
     - **VPC Flow Logs** are delivered to Amazon S3 every 10 minutes.
     - Logs are stored in partitioned folders by year/month/day.
@@ -33,8 +33,8 @@
 ✅ Custom Athena Views — Easy filtering for dashboards.
 
 
-# Tech Stack
-   Terraform (VCS-driven via GitHub)
+# 🚀 Tech Stack
+   Terraform (CLI-driven via GitHub)
    AWS OIDC Authentication (No static credentials)
    Amazon S3
    Amazon Athena
@@ -75,3 +75,7 @@
 # Lesson Learned
 
 
+# 👤 Author
+ **Mark Andrian Hizon** — DevOps/Cloud Enthusiast
+[ 🔗 LinkedIn Profile ](https://www.linkedin.com/in/mark-andrian-hizon-9a215722a/)
+[ 🏅 Credly Profile   ](https://www.credly.com/users/mark-andrian-hizon.9ae74f49)
