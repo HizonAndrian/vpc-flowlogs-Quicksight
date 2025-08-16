@@ -86,6 +86,7 @@ resource "aws_glue_crawler" "glue_crawler" {
   name          = "glue_crawler"
   role          = aws_iam_role.glue_role.arn
   s3_target {
+    #The remaining folder in s3 path will be the partition.
     path = "s3://${aws_s3_bucket.s3_bucket.bucket}/AWSLogs/${data.aws_caller_identity.current.account_id}/vpcflowlogs/${data.aws_region.current.region}/"
   }
   schedule     = "cron(10 0 * * ? *)"
@@ -96,6 +97,7 @@ resource "aws_glue_crawler" "glue_crawler" {
 resource "aws_glue_classifier" "vpc_flowlogs_classifier" {
   name = "vpc_flowlogs_classifier"
 
+  #Qualifier for logs with headers and fixed delimiter
   csv_classifier {
     allow_single_column    = true
     contains_header        = "PRESENT"
@@ -103,11 +105,6 @@ resource "aws_glue_classifier" "vpc_flowlogs_classifier" {
     disable_value_trimming = false
   }
 }
-
-  # grok_classifier {
-  #   classification = "vpcflowlogs"
-  #   grok_pattern   = "%%{NUMBER:version:int}\\s+%%{NOTSPACE:account_id}\\s+%%{NOTSPACE:interface_id}\\s+%%{IP:srcaddr}\\s+%%{IP:dstaddr}\\s+%%{DATA:srcport}\\s+%%{DATA:dstport}\\s+%%{NUMBER:protocol:int}\\s+%%{NUMBER:packets:int}\\s+%%{NUMBER:bytes:int}\\s+%%{NUMBER:start:long}\\s+%%{NUMBER:end:long}\\s+%%{WORD:action}\\s+%%{WORD:log_status}"
-  # }
 
 
 

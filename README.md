@@ -41,6 +41,8 @@
    AWS Glue (Crawler & Data Catalog)
    Amazon QuickSight
    AWS CloudWatch Logs (VPC Flow Logs source)
+   Github
+   Terraform Cloud
 
 
 # Flow Diagram
@@ -64,7 +66,30 @@
 
 
 # Key Queries
- SHOW A FEW ATHENA SQL EXAMPLES YOU USED FOR ANALYSIS
+   - Reject Traffic Analysis
+
+      CREATE VIEW vpc_reject_traffic AS
+      SELECT srcaddr, dstaddr, COUNT(*) AS reject_count, SUM(bytes) AS total_reject_bytes
+      FROM "vpc_flowlogs_db"."flowlogs_ap_southeast_1"
+      WHERE action = 'REJECT'
+      GROUP BY srcaddr, dstaddr
+      ORDER BY reject_count DESC;
+
+   - Accept Traffic Volume
+
+      CREATE OR REPLACE VIEW vpc_accept_traffic AS
+      SELECT srcaddr, SUM(bytes) AS total_bytes, COUNT(*) AS connection_attempts
+      FROM "vpc_flowlogs_db"."flowlogs_ap_southeast_1"
+      WHERE action = 'ACCEPT'
+      GROUP BY srcaddr
+      ORDER BY total_bytes DESC;
+
+   - Display whole logs for a specific day.
+
+      SELECT * FROM "vpc_flowlogs_db"."flowlogs_ap_southeast_1"
+      WHERE year = '2025' 
+         AND month = '08' 
+         AND date = '14';
 
 
 
