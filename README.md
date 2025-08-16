@@ -84,7 +84,7 @@
       GROUP BY srcaddr
       ORDER BY total_bytes DESC;
 
-   - Display whole logs for a specific day.
+   - Display whole log for a specific day.
 
       SELECT * FROM "vpc_flowlogs_db"."flowlogs_ap_southeast_1"
       WHERE year = '2025' 
