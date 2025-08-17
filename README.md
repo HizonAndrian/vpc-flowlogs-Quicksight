@@ -94,7 +94,7 @@
 
 
 # RESULTS
-   ![ Quicksight Dashboard ](https://github.com/HizonAndrian/vpc-flowlogs-Quicksight/blob/main/images/Quicksight1.png)
+   ![ Quicksight Dashboard ](./images/Quicksight1.png)
 
 
 # Lesson Learned
