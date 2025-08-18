@@ -94,9 +94,9 @@
 
 
 # Query results in Quicksight
-[ Accepted traffics ](./images/Quicksight_accept.png) <br>
-[ Rejected traffic ](./images/Quicksight_reject.png) <br>
-[ Compiled traffic base on athena query ](./images/Quicksight2.png)
+[ Accepted traffics ](./images/Quicksight_accepted_traffics.png) <br>
+[ Rejected traffic ](./images/Quicksight_rejected_traffics.png) <br>
+[ Compiled traffic base on athena query ](./images/Quicksight_custom_query.png)
 
 
 # 👤 Author
