@@ -68,34 +68,34 @@
 # Key Queries
    - Reject Traffic Analysis
 
-      CREATE VIEW vpc_reject_traffic AS
-      SELECT srcaddr, dstaddr, COUNT(*) AS reject_count, SUM(bytes) AS total_reject_bytes
-      FROM "vpc_flowlogs_db"."flowlogs_ap_southeast_1"
-      WHERE action = 'REJECT'
-      GROUP BY srcaddr, dstaddr
-      ORDER BY reject_count DESC;
+      CREATE VIEW vpc_reject_traffic AS <br>
+      SELECT srcaddr, dstaddr, COUNT(*) AS reject_count, SUM(bytes) AS total_reject_bytes <br>
+      FROM "vpc_flowlogs_db"."flowlogs_ap_southeast_1" <br>
+      WHERE action = 'REJECT' <br>
+      GROUP BY srcaddr, dstaddr <br>
+      ORDER BY reject_count DESC; 
 
    - Accept Traffic Volume
 
-      CREATE OR REPLACE VIEW vpc_accept_traffic AS
-      SELECT srcaddr, SUM(bytes) AS total_bytes, COUNT(*) AS connection_attempts
-      FROM "vpc_flowlogs_db"."flowlogs_ap_southeast_1"
-      WHERE action = 'ACCEPT'
-      GROUP BY srcaddr
+      CREATE OR REPLACE VIEW vpc_accept_traffic AS <br>
+      SELECT srcaddr, SUM(bytes) AS total_bytes, COUNT(*) AS connection_attempts <br>
+      FROM "vpc_flowlogs_db"."flowlogs_ap_southeast_1" <br>
+      WHERE action = 'ACCEPT' <br>
+      GROUP BY srcaddr <br>
       ORDER BY total_bytes DESC;
 
    - Display whole log for a specific day.
 
-      SELECT * FROM "vpc_flowlogs_db"."flowlogs_ap_southeast_1"
-      WHERE year = '2025' 
-         AND month = '08' 
+      SELECT * FROM "vpc_flowlogs_db"."flowlogs_ap_southeast_1" <br>
+      WHERE year = '2025' <br>
+         AND month = '08' <br>
          AND date = '14';
 
 
 
 # Query Results in Quicksight
-[ Quicksight Dashboard ](./images/Quicksight_accept.png)
-[ Quicksight Dashboard ](./images/Quicksight_reject.png)
+[ Quicksight Dashboard ](./images/Quicksight_accept.png) <br>
+[ Quicksight Dashboard ](./images/Quicksight_reject.png) <br>
 [ Quicksight Dashboard ](./images/Quicksight2.png)
 
 
