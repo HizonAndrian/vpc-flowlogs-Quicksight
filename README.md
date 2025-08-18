@@ -25,24 +25,24 @@
 
 
 # Key Features
-✅ Fully Infrastructure as Code — Provisioned entirely using Terraform.
-✅ OIDC Authentication — GitHub Actions to Terraform Cloud without storing long-lived AWS keys.
-✅ Serverless & Scalable — Uses AWS Glue, Athena, and QuickSight.
-✅ Partitioned Data — Optimized Athena queries via partition pruning.
-✅ Daily Automated Crawling — Glue CRON ensures yesterday’s data is always in the catalog.
+✅ Fully Infrastructure as Code — Provisioned entirely using Terraform. <br>
+✅ OIDC Authentication — GitHub Actions to Terraform Cloud without storing long-lived AWS keys. <br>
+✅ Serverless & Scalable — Uses AWS Glue, Athena, and QuickSight. <br>
+✅ Partitioned Data — Optimized Athena queries via partition pruning. <br>
+✅ Daily Automated Crawling — Glue CRON ensures yesterday’s data is always in the catalog. <br>
 ✅ Custom Athena Views — Easy filtering for dashboards.
 
 
 # 🚀 Tech Stack
-   Terraform (CLI-driven via GitHub)
-   AWS OIDC Authentication (No static credentials)
-   Amazon S3
-   Amazon Athena
-   AWS Glue (Crawler & Data Catalog)
-   Amazon QuickSight
-   AWS CloudWatch Logs (VPC Flow Logs source)
-   Github
-   Terraform Cloud
+   - Terraform (CLI-driven via GitHub) 
+   - AWS OIDC Authentication (No static credentials) 
+   - Amazon S3 
+   - Amazon Athena 
+   - AWS Glue (Crawler & Data Catalog) 
+   - Amazon QuickSight
+   - AWS CloudWatch Logs (VPC Flow Logs source)
+   - Github
+   - Terraform Cloud
 
 
 # Flow Diagram
