@@ -93,10 +93,10 @@
 
 
 
-# Query Results in Quicksight
-[ Quicksight Dashboard ](./images/Quicksight_accept.png) <br>
-[ Quicksight Dashboard ](./images/Quicksight_reject.png) <br>
-[ Quicksight Dashboard ](./images/Quicksight2.png)
+# Query results in Quicksight
+[ Accepted traffics ](./images/Quicksight_accept.png) <br>
+[ Rejected traffic ](./images/Quicksight_reject.png) <br>
+[ Compiled traffic base on athena query ](./images/Quicksight2.png)
 
 
 # 👤 Author
