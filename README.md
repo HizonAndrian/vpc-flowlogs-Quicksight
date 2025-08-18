@@ -100,6 +100,6 @@
 
 
 # 👤 Author
- **Mark Andrian Hizon** — DevOps/Cloud Enthusiast
+ **Mark Andrian Hizon** — DevOps/Cloud Enthusiast <br>
 [ 🔗 LinkedIn Profile ](https://www.linkedin.com/in/mark-andrian-hizon-9a215722a/) <br>
 [ 🏅 Credly Profile   ](https://www.credly.com/users/mark-andrian-hizon.9ae74f49)
