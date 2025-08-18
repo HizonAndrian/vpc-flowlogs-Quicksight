@@ -93,11 +93,10 @@
 
 
 
-# RESULTS
-   ![ Quicksight Dashboard ](./images/Quicksight1.png)
-
-
-# Lesson Learned
+# Query Results in Quicksight
+[ Quicksight Dashboard ](./images/Quicksight_accept.png)
+[ Quicksight Dashboard ](./images/Quicksight_reject.png)
+[ Quicksight Dashboard ](./images/Quicksight2.png)
 
 
 # 👤 Author
