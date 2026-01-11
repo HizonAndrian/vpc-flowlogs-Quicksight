@@ -18,6 +18,7 @@ data "aws_iam_policy_document" "s3_policy_document" {
 
 resource "aws_s3_bucket" "s3_bucket" {
   bucket = "vpc-flowlogs-quicksight"
+  force_destroy = true
 }
 
 resource "aws_s3_bucket" "s3_athena" {
