@@ -84,13 +84,10 @@
       GROUP BY srcaddr <br>
       ORDER BY total_bytes DESC;
 
-   - Display whole log for a specific day.
 
-      SELECT * FROM "vpc_flowlogs_db"."flowlogs_ap_southeast_1" <br>
-      WHERE year = '2025' <br>
-         AND month = '08' <br>
-         AND date = '14';
-
+### Recommended Enhancements
+- Add date-based partitions to organize VPC Flow Logs, improve query performance, and reduce Athena query costs.
+- Add partitions to the Glue table to improve query performance and reduce Athena query costs.
 
 
 # Query results in Quicksight
