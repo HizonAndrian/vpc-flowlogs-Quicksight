@@ -73,4 +73,5 @@ resource "aws_s3_bucket_policy" "s3_policy" {
 
 resource "aws_s3_bucket" "s3_athena" {
   bucket = "athena-results-for-quicksight"
+  force_destroy = true
 }
