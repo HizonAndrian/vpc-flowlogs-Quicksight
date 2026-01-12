@@ -47,8 +47,8 @@ resource "aws_route_table_association" "vpc_rtbl_association" {
 }
 
 resource "aws_flow_log" "vpc_logs" {
+  vpc_id               = aws_vpc.vpc_main.id
   log_destination_type = "s3"
   log_destination      = aws_s3_bucket.s3_bucket.arn
   traffic_type         = "ALL"
-  vpc_id               = aws_vpc.vpc_main.id
 }

@@ -64,9 +64,9 @@ data "aws_iam_policy_document" "athena_policy" {
     ]
     effect = "Allow"
     resources = [
-      "arn:aws:glue:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:catalog",
-      "arn:aws:glue:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:database/vpc_flowlogs_db",
-      "arn:aws:glue:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:table/vpc_flowlogs_db/*"
+      "arn:aws:glue:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:catalog",
+      "arn:aws:glue:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:database/vpc_flowlogs_db",
+      "arn:aws:glue:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:table/vpc_flowlogs_db/*"
     ]
   }
 }
