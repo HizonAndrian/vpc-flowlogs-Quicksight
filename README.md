@@ -77,7 +77,7 @@
 
    - Accept Traffic Volume
 
-      CREATE OR REPLACE VIEW vpc_accept_traffic AS <br>
+      CREATE VIEW vpc_accept_traffic AS <br>
       SELECT srcaddr, SUM(bytes) AS total_bytes, COUNT(*) AS connection_attempts <br>
       FROM "vpc_flowlogs_db"."flowlogs_ap_southeast_1" <br>
       WHERE action = 'ACCEPT' <br>

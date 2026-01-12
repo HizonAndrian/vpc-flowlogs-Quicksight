@@ -89,6 +89,7 @@ resource "aws_glue_crawler" "glue_crawler" {
     #The remaining folder in s3 path will be the partition.
     path = "s3://${aws_s3_bucket.s3_bucket.bucket}/AWSLogs/${data.aws_caller_identity.current.account_id}/vpcflowlogs/${data.aws_region.current.region}/"
   }
+  # UTC
   schedule     = "cron(10 0 * * ? *)"
   table_prefix = "flowlogs_"
   classifiers  = [aws_glue_classifier.vpc_flowlogs_classifier.name]
