@@ -1,7 +1,9 @@
 # Testing and performing terraform plan
 name: Terraform testing
 on:
-  push: [main]
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
