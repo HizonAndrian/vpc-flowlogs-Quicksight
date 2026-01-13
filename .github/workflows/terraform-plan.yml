@@ -60,9 +60,9 @@ jobs:
         run: | 
           terraform plan -out=tfplan                     # Binary output
           terraform show -no-color tfplan > tfplan.txt   # Human readable output
-        continue-on-error: true
 
       - name: Generate an artifact
+        if: Always()
         uses: actions/upload-artifact@v4
         with:
           name: tfplan-output
