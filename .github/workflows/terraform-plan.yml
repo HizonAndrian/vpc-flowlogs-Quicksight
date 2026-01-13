@@ -14,13 +14,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Terraform setup
-        uses: hashicorp/setup-terraform@v3
+      - name: Terraform bootstrap
+        uses: ./.github/actions/terraform_bootstrap
         with:
-          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          terraform_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: Terraform Initialization
-        run: terraform init
+      # - name: Terraform setup
+      #   uses: hashicorp/setup-terraform@v3
+      #   with:
+      #     cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      # - name: Terraform Initialization
+      #   run: terraform init
 
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v6
@@ -42,3 +47,10 @@ jobs:
 
       - name: Validate
         run: terraform validate
+
+  plan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3

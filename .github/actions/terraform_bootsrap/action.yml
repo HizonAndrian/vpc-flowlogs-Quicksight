@@ -1,0 +1,17 @@
+name: 'Terraform setup and initialize steps.'
+description: 'Steps for setting up and initializing terraform.'
+inputs:
+  terraform_token:
+    description: 'Terraform API Token'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Terraform setup
+      uses: hashicorp/setup-terraform@v3
+      with:
+        cli_config_credentials_token: ${{ inputs.terraform_token }}
+
+    - name: Terraform Initialization
+      run: terraform init
