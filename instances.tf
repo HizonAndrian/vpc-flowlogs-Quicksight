@@ -20,7 +20,7 @@ data "aws_ami" "getAMI" {
 }
 
 resource "aws_instance" "ec2_server" {
-  ami                    = data.aws_ami.getAMI.id
+  ami                    = data.aws_ami.getAMI
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.vpc_subnet["subnet1"].id
   vpc_security_group_ids = [aws_security_group.security_group.id]
