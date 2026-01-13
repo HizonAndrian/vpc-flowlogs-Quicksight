@@ -54,7 +54,7 @@ jobs:
           terraform_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform plan
-        continue-on-error: true
+        id: tfplan_step
         env:
           # no tfvars within runners. Add variables in repo var within github.
           TF_VAR_subnet_config: ${{ vars.TF_VAR_subnet_config }}
@@ -63,6 +63,7 @@ jobs:
           terraform show -no-color tfplan > tfplan.txt   # Human readable output
 
       - name: Generate an artifact
+        if: Always()
         uses: actions/upload-artifact@v4
         with:
           name: tfplan-output
