@@ -19,14 +19,14 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
+      - name: Terraform Initialization
+        run: terraform init
+
       - name: Format
         run: terraform fmt
 
       - name: Validate
         run: terraform validate
-
-      - name: Terraform Initialization
-        run: terraform init
       
       - name: Display
         run: echo "It worked!"
