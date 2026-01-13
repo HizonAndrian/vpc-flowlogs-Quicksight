@@ -1,0 +1,13 @@
+# Testing and performing terraform plan
+name: Terraform testing
+on:
+  push: [main]
+  workflow_dispatch:
+
+  jobs:
+    testing:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: setup testing.
+          runs: echo "Set up works."
