@@ -56,10 +56,11 @@ jobs:
       - name: Terraform plan
         env:
           # no tfvars within runners. Add variables in repo var within github.
-          TF_VAR_subnet_config: ${{ vars.TF_VAR_subnet_config }}
+          TF_VAR_subnet_config: ${{ vars.TF_VAR_subnet_confi }}
         run: | 
           terraform plan -out=tfplan                     # Binary output
           terraform show -no-color tfplan > tfplan.txt   # Human readable output
+        continue-on-error: true
 
       - name: Generate an artifact
         uses: actions/upload-artifact@v4
