@@ -6,9 +6,6 @@ on:
       - main
   workflow_dispatch:
 
-# env:
-#   TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
-
 jobs:
   testing:
     runs-on: ubuntu-latest
@@ -22,11 +19,14 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: Terraform format
+      - name: Format
         run: terraform fmt
+
+      - name: Validate
+        run: terraform validate
 
       - name: Terraform Initialization
         run: terraform init
       
       - name: Display
-        run: echo "It workked!"
+        run: echo "It worked!"
