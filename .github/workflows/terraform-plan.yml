@@ -23,4 +23,4 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
       
       - name: Display
-        run: echop "It workked!"
+        run: echo "It workked!"
