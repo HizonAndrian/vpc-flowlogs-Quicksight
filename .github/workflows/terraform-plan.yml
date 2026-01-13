@@ -64,7 +64,6 @@ jobs:
           terraform show -no-color tfplan > tfplan.txt   # Human readable output
 
       - name: Generate an artifact
-        if: Always()
         uses: actions/upload-artifact@v4
         with:
           name: tfplan-output
