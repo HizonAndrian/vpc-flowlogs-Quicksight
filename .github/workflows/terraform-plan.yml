@@ -51,7 +51,7 @@ jobs:
       - name: Terraform bootstrap
         uses: ./.github/actions/terraform_bootstrap
         with:
-          terraform_token: ${{ secret.TF_API_TOKEN }}
+          terraform_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform plan
         run: terraform plan
