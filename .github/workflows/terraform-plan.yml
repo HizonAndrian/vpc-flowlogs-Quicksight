@@ -56,5 +56,5 @@ jobs:
       - name: Terraform plan
         env:
           # no tfvars within runners. Add variables in repo var within github.
-          TF_VAR_subnet_config: ${{ var.TF_VAR_subnet_config }}
+          TF_VAR_subnet_config: ${{ vars.TF_VAR_subnet_config }}
         run: terraform plan
