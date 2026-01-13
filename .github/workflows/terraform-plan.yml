@@ -6,8 +6,8 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+# env:
+#   TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
 jobs:
   testing:
@@ -19,3 +19,8 @@ jobs:
 
       - name: Terraform setup
         uses: hashicorp/setup-terraform@v3
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      
+      - name: Display
+        run: echop "It workked!"
