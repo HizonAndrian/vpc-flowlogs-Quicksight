@@ -10,5 +10,5 @@ jobs:
 
     steps:
       - name: setup testing.
-        runs: | 
+        run: | 
           echo "Set up works."
