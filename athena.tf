@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "athena_policy" {
     ]
     effect = "Allow"
     resources = [
-      "${aws_s3_bucket.s3_athena.arn}",
+      aws_s3_bucket.s3_athena.arn,
       "${aws_s3_bucket.s3_athena.arn}/*"
     ]
   }
