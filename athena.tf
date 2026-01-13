@@ -6,7 +6,7 @@ resource "aws_athena_database" "athena_db" {
 
 #Destination where Athena will store the query results
 resource "aws_athena_workgroup" "athena_workgroup" {
-  name = "athena_workgroup"
+  name          = "athena_workgroup"
   force_destroy = true
 
   configuration {

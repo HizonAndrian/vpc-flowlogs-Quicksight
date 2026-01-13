@@ -17,17 +17,17 @@ data "aws_iam_policy_document" "s3_policy_document" {
 }
 
 resource "aws_s3_bucket" "s3_bucket" {
-  bucket = "vpc-flowlogs-quicksight"
+  bucket        = "vpc-flowlogs-quicksight"
   force_destroy = true
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "s3_encryption" {
   bucket = aws_s3_bucket.s3_bucket.id
-  
+
   rule {
-     apply_server_side_encryption_by_default {
-       sse_algorithm = "AES256"
-     }
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
   }
 }
 
@@ -54,11 +54,11 @@ resource "aws_s3_bucket_lifecycle_configuration" "s3_lifecycle" {
 
     noncurrent_version_transition {
       noncurrent_days = 30
-      storage_class = "STANDARD_IA"
+      storage_class   = "STANDARD_IA"
     }
 
     transition {
-      days = 60
+      days          = 60
       storage_class = "STANDARD_IA"
     }
 
@@ -72,6 +72,6 @@ resource "aws_s3_bucket_policy" "s3_policy" {
 }
 
 resource "aws_s3_bucket" "s3_athena" {
-  bucket = "athena-results-for-quicksight"
+  bucket        = "athena-results-for-quicksight"
   force_destroy = true
 }
