@@ -4,10 +4,10 @@ on:
   push: [main]
   workflow_dispatch:
 
-  jobs:
-    testing:
-      runs-on: ubuntu-latest
+jobs:
+  testing:
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: setup testing.
-          runs: echo "Set up works."
+    steps:
+      - name: setup testing.
+        runs: echo "Set up works."
