@@ -136,7 +136,7 @@ data "aws_iam_policy_document" "glue_policy_document" {
     ]
     effect = "Allow"
     resources = [
-      "${aws_s3_bucket.s3_bucket.arn}",
+      aws_s3_bucket.s3_bucket.arn,
       "${aws_s3_bucket.s3_bucket.arn}/*"
     ]
   }
