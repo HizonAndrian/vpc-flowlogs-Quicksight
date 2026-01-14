@@ -60,6 +60,7 @@ jobs:
           TF_VAR_subnet_config: ${{ vars.TF_VAR_subnet_config }}
         run: | 
           # Only works if plan succeded
+          # Cant create an readable file if failed.
           terraform plan -out=tfplan                     # Binary output
           terraform show -no-color tfplan > tfplan.txt   # Human readable output
 
