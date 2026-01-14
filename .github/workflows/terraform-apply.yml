@@ -15,3 +15,8 @@ jobs:
         uses: ./.github/actions/terraform_bootstrap
         with:
           terraform_token: ${{ secrets.TF_API_TOKEN}}
+
+      - name: Terraform deploy
+        env:
+          TF_VARS_subnet_config: ${{ vars.TF_VAR_subnet_config }}
+        run: terraform deploy -auto-approve
