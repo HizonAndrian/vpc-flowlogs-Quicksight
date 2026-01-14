@@ -19,4 +19,4 @@ jobs:
       - name: Terraform deploy
         env:
           TF_VARS_subnet_config: ${{ vars.TF_VAR_subnet_config }}
-        run: terraform deploy -auto-approve
+        run: terraform apply -auto-approve
