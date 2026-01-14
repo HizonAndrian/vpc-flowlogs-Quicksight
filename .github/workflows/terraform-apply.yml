@@ -18,5 +18,6 @@ jobs:
 
       - name: Terraform deploy
         env:
-          TF_VARS_subnet_config: ${{ vars.TF_VAR_SUBNET_CONFIG }}
+          # no tfvars within runners. Add variables in repo var within github.
+          TF_VAR_subnet_config: ${{ vars.TF_VAR_subnet_config }}
         run: terraform apply -auto-approve
