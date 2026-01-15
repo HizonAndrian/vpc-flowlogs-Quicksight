@@ -1,0 +1,24 @@
+name: Terraform plan (Pull request commenter)
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**/*.tf'
+
+permissions:
+  content: read
+  pull-requests: write
+
+  jobs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: action/checkout@v3
+
+      - name: Terraform bootstrap
+        uses: ./.github/actions/terraform_bootstrap
+        with:
+          terraform_token: ${{ secrets.TF}}
