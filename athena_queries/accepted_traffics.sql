@@ -1,6 +1,8 @@
-CREATE VIEW vpc_reject_traffic AS
-SELECT srcaddr, dstaddr, COUNT(*) AS reject_count, SUM(bytes) AS total_reject_bytes
+SELECT
+  date(from_unixtime(start)) AS log_date,
+  srcaddr,
+  COUNT(*) AS rejected_requests
 FROM "vpc_flowlogs_db"."glue_catalog_table"
 WHERE action = 'REJECT'
-GROUP BY srcaddr, dstaddr
-ORDER BY reject_count DESC;
+GROUP BY date(from_unixtime(start)), srcaddr
+ORDER BY log_date;

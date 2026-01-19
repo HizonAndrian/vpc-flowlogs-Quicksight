@@ -12,19 +12,20 @@ permissions:
   pull-requests: write
 
 jobs:
-  runs-on: ubuntu-latest
+  pr-comment:
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout code
-      uses: action/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: action/checkout@v3
 
-    - name: Terraform bootstrap
-      uses: ./.github/actions/terraform_bootstrap
-      with:
-        terraform_token: ${{ secrets.TF}}
+      - name: Terraform bootstrap
+        uses: ./.github/actions/terraform_bootstrap
+        with:
+          terraform_token: ${{ secrets.TF}}
 
-    - name: Terraform validate
-      run: terraform validate
+      - name: Terraform validate
+        run: terraform validate
 
-    - name: Terraform fmt
-      run: terraform fmt -check
+      - name: Terraform fmt
+        run: terraform fmt -check
