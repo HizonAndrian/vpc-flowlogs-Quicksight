@@ -22,3 +22,9 @@ permissions:
         uses: ./.github/actions/terraform_bootstrap
         with:
           terraform_token: ${{ secrets.TF}}
+
+      - name: Terraform validate
+        run: terraform validate
+
+      - name: Terraform fmt
+        run: terraform fmt -check
