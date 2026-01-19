@@ -50,7 +50,7 @@ jobs:
           # Action that writes or modifies anything in GitHub requires authentication.
           token: ${{ secrets.GITHUB_TOKEN }}
           # Get the PR number of the PR triggered this workflow.
-          issu-number: ${{ github.event.pull_request.number }}
+          issue-number: ${{ github.event.pull_request.number }}
           body: |
             ## 📌 Terraform Plan Result
             ```
