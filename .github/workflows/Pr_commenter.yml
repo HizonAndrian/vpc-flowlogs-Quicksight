@@ -30,3 +30,6 @@ jobs:
       # Basic Changes
       - name: Terraform fmt
         run: terraform fmt -check
+
+      - name: Display
+        run: echo "Success!"
