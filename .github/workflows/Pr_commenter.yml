@@ -27,9 +27,30 @@ jobs:
       - name: Terraform validate
         run: terraform validate
 
-      # Basic Changes
       - name: Terraform fmt
         run: terraform fmt -check
 
       - name: Display
         run: echo "Success!"
+
+      - name: Terraform plan
+        run: |
+          terraform plan -no-color -out=plan_result
+
+      - name: Convert plan_result into text
+        run: |
+          terraform show -no-color plan_result > plan.txt
+
+      - name: PR commenter
+        uses: peter-evans/create-or-update-comment@v5
+        with:
+          # Action that writes or modifies anything in GitHub requires authentication.
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Get the PR number of the PR triggered this workflow.
+          issu-number: ${{ github.event.pull_request.number }}
+          body: |
+            ## 📌 Terraform Plan Result
+            ```
+            $(cat plan.txt)
+            ```
+
