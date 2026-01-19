@@ -22,7 +22,7 @@ jobs:
       - name: Terraform bootstrap
         uses: ./.github/actions/terraform_bootstrap
         with:
-          terraform_token: ${{ secrets.TF}}
+          terraform_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform validate
         run: terraform validate
