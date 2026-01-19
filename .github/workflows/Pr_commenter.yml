@@ -8,7 +8,7 @@ on:
       - '**/*.tf'
 
 permissions:
-  content: read
+  contents: read
   pull-requests: write
 
 jobs:
