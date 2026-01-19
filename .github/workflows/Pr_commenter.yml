@@ -34,6 +34,9 @@ jobs:
         run: echo "Success!"
 
       - name: Terraform plan
+        env:
+          # no tfvars within runners. Add variables in repo var within github.
+          TF_VAR_subnet_config: ${{ vars.TF_VAR_subnet_config }}
         run: |
           terraform plan -no-color -out=plan_result
 
@@ -41,16 +44,23 @@ jobs:
         run: |
           terraform show -no-color plan_result > plan.txt
 
+      - name: Assign plan result on github environment variable.
+        id: plan_output
+        run: |
+          echo "plan_content<<EOF" >> $GITHUB_ENV
+          cat plan.txt >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
       - name: PR commenter
         uses: peter-evans/create-or-update-comment@v5
         with:
           # Action that writes or modifies anything in GitHub requires authentication.
           token: ${{ secrets.GITHUB_TOKEN }}
           # Get the PR number of the PR triggered this workflow.
-          issu-number: ${{ github.event.pull_request.number }}
+          issue-number: ${{ github.event.pull_request.number }}
           body: |
             ## 📌 Terraform Plan Result
             ```
-            $(cat plan.txt)
-            ```
+            ${{ env.plan_content }}
 
+            ```
